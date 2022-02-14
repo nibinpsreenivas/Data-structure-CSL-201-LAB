@@ -11,7 +11,7 @@ int main()
    int item,a,o;
     do
      { 
-       printf("\n1)insert\n2)delete\n3)display\n4)end");
+       printf("\n1)insertr\n2)deletef\n3)insertf\n4)deleter\n5)display\n6)end");
        printf("\nenter the number to perform the operation");
        scanf("%d",&o);
        switch(o)
@@ -32,15 +32,32 @@ int main()
                         a=delete();
                         printf("\nthe deleted element is %d",a);
                       }   
-                     break;        
-         case 3 : if(isempty())
+                     break;  
+         case 3 : if(isfull())
+                    printf("\nthe queuee is full");
+                    else
+                     {
+                       printf("\nenter the element to be inserted into queue");
+                       scanf("%d",&a);
+                       insert(a);
+                      }
+                    break;
+          case 4 : if(isempty())
+                     printf("\nthe queuee is empty");
+                      else
+                      {
+                        a=delete();
+                        printf("\nthe deleted element is %d",a);
+                      }   
+                     break;       
+         case 5 : if(isempty())
                      printf("\nthe queuee is empty");
                     else
                       display();
                    break;
-         }
+         
                                    
-        }while(o!=4);
+        }while(o!=6);
  }
  
  int isempty()
@@ -57,7 +74,7 @@ int main()
     else
       return 0;
  }
- void insert(int item)
+ void insertr(int item)
  {
    if(front=-1)
      front = rear = 0;
@@ -65,7 +82,15 @@ int main()
      rear = (rear+1)%n;
     q[rear]=item;
  }
- int delete()
+ void insertf(int item)
+ {
+   if(front=-1)
+     front = rear = 0;
+   else
+     front = (front+n-1)%n;
+    q[front]=item;
+ }
+ int deletef()
  {
    int a = q[front];
    if(front==rear)
@@ -74,11 +99,18 @@ int main()
      front= (front+1)%n;
    return a;
  }
+ int deleter()
+ {
+   int a = q[rear];
+   if(front==rear)
+      front=rear=-1;
+    else
+     rear= (rear+1)%n;
+   return a;
+ }
 void display()
 {
   for(int i=front;i<rear;i++)
     printf("\n %d",q[i]);
 }  
     
-           
-                     
